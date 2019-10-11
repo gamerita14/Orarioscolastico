@@ -1,0 +1,20 @@
+<br>
+<br>
+<form [formGroup]="formclasse" (ngSubmit)="cliccato()">
+    <mat-form-field>
+    <input
+    matInput 
+    placeholder="Test" 
+    type="text" formControlName="nomeclasse">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-select [disabled]="disattiva.value">
+            <mat-option [value]="1">1</mat-option>
+            <mat-option [value]="2">2</mat-option>
+            <mat-option [value]="3">3</mat-option>
+        </mat-select>
+    </mat-form-field>   
+    <mat-slide-toggle [formControl]="disattiva">aaa</mat-slide-toggle>
+    <button type="submit" mat-raised-button>Submit</button>
+    
+</form>

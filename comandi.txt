@@ -1,0 +1,3 @@
+ng build my-app --prod="true"
+
+ng build my-app --prod

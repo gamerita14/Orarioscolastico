@@ -1,0 +1,14 @@
+.Contenitore{
+    display: flex;
+    flex-direction: column;
+  }
+
+.Contenitore > * {
+    width: 100%;
+  }
+
+button:hover{
+  background: rgba(5, 172, 102, 0.678)
+
+}
+  

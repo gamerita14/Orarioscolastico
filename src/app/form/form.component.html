@@ -1,0 +1,38 @@
+
+
+<!--FORM-->
+<div id="corpo">
+  <form [formGroup]="PERCLASSE" (ngSubmit)="Submitclasse()">
+    <div class="Contenitore">
+
+        <mat-form-field>
+            <mat-select placeholder="Seleziona la classe" formControlName="SelClasse">
+            <mat-option *ngFor="let classe of classiac" [value]="classe.ID">{{classe.Classe}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="PERCLASSE.controls.SelClasse.hasError('required')">
+              <strong>Campo richiesto</strong>  
+            </mat-error>
+        </mat-form-field>
+
+      <mat-form-field>
+        <mat-select placeholder="Seleziona il giorno" formControlName="SelGiorno">
+          <mat-option *ngFor="let giorno of giorniac" [value]="giorno.ID" >{{giorno.Giorno}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="PERCLASSE.controls.SelGiorno.hasError('required')">
+          <strong>Campo richiesto</strong>  
+        </mat-error>
+      </mat-form-field>
+      <mat-slide-toggle formControlName="settimana">Tutta la settimana</mat-slide-toggle>
+      <button type="submit" 
+      [disabled]="!PERCLASSE.valid" 
+      mat-raised-button 
+      >Ricerca!<mat-icon>search</mat-icon></button>
+    </div>
+  </form>
+  <ng-template [ngIf]="!giorniac">
+    
+    <div class="ErrorMessage">
+        Il Database non è momentaneamente raggiungibile, riprovare più tardi.
+    </div>
+  </ng-template>
+</div>

@@ -1,0 +1,37 @@
+
+
+<!--FORM-->
+<form [formGroup]="PERAULA" (ngSubmit)="SubmitAula()">
+    <div class="Contenitore">
+  
+        <mat-form-field>
+            <mat-select placeholder="Seleziona l'aula" formControlName="SelAula">
+              <mat-option *ngFor="let aula of aulaac" [value]="aula.ID">{{aula.Aula}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="PERAULA.controls.SelAula.hasError('required')">
+              <strong>Campo richiesto</strong>  
+            </mat-error>
+        </mat-form-field>
+  
+      <mat-form-field>
+        <mat-select placeholder="Seleziona il giorno" formControlName="SelGiorno" >
+          <mat-option *ngFor="let giorno of giorniac" [value]="giorno.ID">{{giorno.Giorno}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="PERAULA.controls.SelGiorno.hasError('required')">
+          <strong>Campo richiesto</strong>  
+        </mat-error>
+      </mat-form-field>
+
+      <mat-slide-toggle formControlName="settimana" >Tutta la settimana</mat-slide-toggle>
+      <button type="submit" 
+      [disabled]="!PERAULA.valid" 
+      mat-raised-button 
+      >Ricerca!<mat-icon>search</mat-icon></button>
+    </div>
+    <ng-template [ngIf]="!giorniac" >
+      <div class="ErrorMessage">
+          Il Database non è momentaneamente raggiungibile, riprovare più tardi.
+      </div>
+    </ng-template>
+  </form>
+  
